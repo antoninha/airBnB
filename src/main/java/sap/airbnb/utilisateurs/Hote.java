@@ -15,4 +15,7 @@ public final class Hote extends Personne {
 		System.out.print(" qui s'engage à répondre dans les " + delaiReponse + " heures");
 	}
 
+	public int getDelaiReponse() {
+		return delaiReponse;
+	}
 }
