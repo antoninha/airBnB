@@ -1,8 +1,16 @@
 package sap.airbnb;
 
-import sap.airbnb.frame.panelHote.PanelHoteAjout;
+import java.util.ArrayList;
+import java.util.Date;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+
+import sap.airbnb.data.AirBnBData;
+import sap.airbnb.data.Search;
+import sap.airbnb.frame.AirbnbFrame;
+import sap.airbnb.logements.Logement;
+import sap.airbnb.utilisateurs.Voyageur;
+import sap.airbnb.reservations.*;
 
 public class Main {
 
@@ -18,10 +26,10 @@ public class Main {
             logement.afficher();
         }
 
+        */
 
-
-
-        /Voyageur voyageur = AirBnBData.getInstance().getVoyageurs().get(0);
+        /*
+        Voyageur voyageur = AirBnBData.getInstance().getVoyageurs().get(0);
 
         // Critères de mon séjour
         Date dateArrivee = new Date(1552255232322l);
@@ -35,10 +43,9 @@ public class Main {
         Reservation reservation = new Reservation(sejour, voyageur);
         reservation.afficher();
         */
-        JFrame frame = new JFrame();
-        PanelHoteAjout a = new PanelHoteAjout();
-        frame.add(a.getPanelListeHote());
-        frame.setVisible(true);
 
+        AirbnbFrame airbnbFrame = new AirbnbFrame();
+        
+        airbnbFrame.setVisible(true);
     }
 }
