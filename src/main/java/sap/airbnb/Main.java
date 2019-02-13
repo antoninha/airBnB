@@ -3,8 +3,11 @@ package sap.airbnb;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.JFrame;
+
 import sap.airbnb.data.AirBnBData;
 import sap.airbnb.data.Search;
+import sap.airbnb.frame.AirbnbFrame;
 import sap.airbnb.logements.Logement;
 import sap.airbnb.utilisateurs.Voyageur;
 import sap.airbnb.reservations.*;
@@ -25,7 +28,7 @@ public class Main {
 
         */
 
-
+        /*
         Voyageur voyageur = AirBnBData.getInstance().getVoyageurs().get(0);
 
         // Critères de mon séjour
@@ -39,5 +42,10 @@ public class Main {
         // Réservation
         Reservation reservation = new Reservation(sejour, voyageur);
         reservation.afficher();
+        */
+
+        AirbnbFrame airbnbFrame = new AirbnbFrame();
+        
+        airbnbFrame.setVisible(true);
     }
 }

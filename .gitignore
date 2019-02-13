@@ -9,3 +9,9 @@ buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
 AirBnBSwing.iml
+AirBnBSwing.iml
+.idea/
+.vscode/
+.settings/
+.classpath
+.project
