@@ -1,15 +1,14 @@
 package sap.airbnb.frame.panelHote;
 
-import sun.tools.jps.Jps;
-
 import javax.swing.*;
+import java.awt.*;
 
-public class PanelHoteAjout extends JPanel {
-    private JPanel panelListeHote = new JPanel();
+public class PanelHoteAjout extends  JPanel{
+
     private JTextField champTextePrenom = new JTextField("");
     private JTextField champTexteNom = new JTextField("");
-    private JTextField champTexteAge = new JTextField("0");
-    private JTextField champTexteDelaiReponse = new JTextField("0");
+    private JTextField champTexteAge = new JTextField(0);
+    private JTextField champTexteDelaiReponse = new JTextField(0);
     private JLabel labelPrenom = new JLabel("Prénom");
     private JLabel labelNom = new JLabel("Nom");
     private JLabel labelAge = new JLabel("Age");
@@ -18,33 +17,41 @@ public class PanelHoteAjout extends JPanel {
     private JButton btnAnnuler = new JButton("Annuler");
 
     public PanelHoteAjout() {
+        setLayout(new GridLayout(5,1));
 
-        panelListeHote.add(labelPrenom);
-        panelListeHote.add(champTextePrenom);
+        Panel panelPrenom = new Panel();
+        panelPrenom.add(labelPrenom);
+        champTextePrenom.setPreferredSize(new Dimension(150,18));
+        panelPrenom.add(champTextePrenom);
 
-        panelListeHote.add(labelNom);
-        panelListeHote.add(champTexteNom);
+        Panel panelNom = new Panel();
+        panelNom.add(labelNom);
+        champTexteNom.setPreferredSize(new Dimension(220,18));
+        panelNom.add(champTexteNom);
 
-        panelListeHote.add(labelAge);
-        panelListeHote.add(champTexteAge);
+        Panel panelAge = new Panel();
+        panelAge.add(labelAge);
+        champTexteAge.setPreferredSize(new Dimension(40,18));
+        panelAge.add(champTexteAge);
 
-        panelListeHote.add(labelDelaiReponse);
-        panelListeHote.add(champTexteDelaiReponse);
+        Panel panelDelaiReponse = new Panel();
+        panelDelaiReponse.add(labelDelaiReponse);
+        champTexteDelaiReponse.setPreferredSize(new Dimension(40,18));
+        panelDelaiReponse.add(champTexteDelaiReponse);
 
-        panelListeHote.add(btnValider);
-        panelListeHote.add(btnAnnuler);
+        Panel panelBtn = new Panel();
+        panelBtn.add(btnValider);
+        panelBtn.add(btnAnnuler);
 
-        ListenerBtnAjout clicBtnAjouter = new ListenerBtnAjout(
-                champTextePrenom.getText(),
-                champTextePrenom.getText(),
-                Integer.parseInt(champTexteAge.getText()),
-                Integer.parseInt(champTexteDelaiReponse.getText())
-        );
+        add(panelPrenom);
+        add(panelNom);
+        add(panelAge);
+        add(panelDelaiReponse);
+        add(panelBtn);
+
+        ListenerBtnAjout clicBtnAjouter = new ListenerBtnAjout(champTextePrenom,champTexteNom,champTexteAge,champTexteDelaiReponse);
             btnValider.addActionListener(clicBtnAjouter);
     }
 
-    public JPanel getPanelListeHote() {
-        return panelListeHote;
-    }
 
 }

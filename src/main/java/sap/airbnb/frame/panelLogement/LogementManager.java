@@ -13,11 +13,9 @@ import sun.jvm.hotspot.types.JIntField;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
 
 
-public class LogementManager {
+public final class LogementManager {
 
     static BoxLayout box;
     static AirBnBData data = AirBnBData.getInstance();
@@ -25,7 +23,7 @@ public class LogementManager {
     ///////////////////////////////////////
     //          LISTE LOGEMENT PANEL
     //
-    public JPanel getLogementList(){
+    public static JPanel getLogementList(){
 
         JPanel panel = new JPanel();
 
@@ -43,7 +41,7 @@ public class LogementManager {
     //          AJOUT LOGEMENT PANEL
     //
 
-    public JPanel addLogement(){
+    public static JPanel addLogement(){
 
         JPanel main = new JPanel();
         JPanel panel = new JPanel();
