@@ -1,43 +1,52 @@
 package sap.airbnb;
 
-import java.util.ArrayList;
-import java.util.Date;
 
-import sap.airbnb.data.AirBnBData;
-import sap.airbnb.data.Search;
+import java.util.ArrayList;
+
 import sap.airbnb.logements.Logement;
+import sap.airbnb.utilisateurs.Hote;
 import sap.airbnb.utilisateurs.Voyageur;
 import sap.airbnb.reservations.*;
+import sap.airbnb.frame.panelLogement.*;
+
+import javax.swing.*;
 
 public class Main {
+    static int iteration = 0;
+    static JFrame frame;
+    static JLabel count;
+
+
+    public static ArrayList<Hote> listHotes;
+    public static ArrayList<Logement> listLogements;
+    public static ArrayList<Voyageur> listVoyageurs;
+    public static ArrayList<Reservation> listReservations;
 
     public static void main(String[] args) {
 
-        /*
-        Search.SearchBuilder searchBuilder = new Search.SearchBuilder(2).possedeBalcon(false);
-        Search search = searchBuilder.build();
-        ArrayList<Logement> logements = search.result();
-
-        for (Logement logement: logements) {
-            System.out.println("--------------------------");
-            logement.afficher();
-        }
-
-        */
 
 
-        Voyageur voyageur = AirBnBData.getInstance().getVoyageurs().get(0);
 
-        // Critères de mon séjour
-        Date dateArrivee = new Date(1552255232322l);
-        Logement logement = AirBnBData.getInstance().getLogements().get(1);
-        int nbNuits = 2;
-        int nbVoyageurs = 2;
 
-        Sejour sejour = SejourFactory.getSejour(dateArrivee, logement, nbNuits, nbVoyageurs);
+        frame = new JFrame();
 
-        // Réservation
-        Reservation reservation = new Reservation(sejour, voyageur);
-        reservation.afficher();
+
+         LogementManager logementManger = new LogementManager();
+
+        // Fenetre principale
+        frame.setTitle("Hello !");
+        frame.setSize(320,140);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+        JPanel panel = logementManger.getLogementList();
+
+        frame.add(panel);
+        //frame.pack();
+        frame.setVisible(true);
+
     }
+
 }

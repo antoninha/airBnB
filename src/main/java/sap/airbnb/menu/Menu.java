@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import sap.airbnb.frame.panelLogement.LogementManager;
 import sap.airbnb.logements.Appartement;
 import sap.airbnb.logements.Logement;
 import sap.airbnb.logements.Maison;
@@ -11,21 +12,22 @@ import sap.airbnb.reservations.Reservation;
 import sap.airbnb.utilisateurs.Hote;
 import sap.airbnb.utilisateurs.Voyageur;
 
+import javax.swing.*;
+
 public class Menu {
 
 	static Scanner scanner;
 
-	static ArrayList<Hote> listHotes;
-	static ArrayList<Logement> listLogements;
-	static ArrayList<Voyageur> listVoyageurs;
-	static ArrayList<Reservation> listReservations;
+	public static ArrayList<Hote> listHotes;
+	public static ArrayList<Logement> listLogements;
+	public static ArrayList<Voyageur> listVoyageurs;
+	public static ArrayList<Reservation> listReservations;
+	
+	
 
 	public static void main(String[] args) {
 
-		System.out.println("Bienvenu chez AirBnB");
-
-		scanner = new Scanner(System.in);
-
+		
 		listHotes = new ArrayList<Hote>();
 		listLogements = new ArrayList<Logement>();
 		listVoyageurs = new ArrayList<Voyageur>();
@@ -33,9 +35,27 @@ public class Menu {
 
 		init();
 
-		listerMenu();
 
-		scanner.close();
+		JFrame frame = new JFrame();
+
+
+		LogementManager logementManger = new LogementManager();
+
+		// Fenetre principale
+		frame.setTitle("Hello !");
+		frame.setSize(700,440);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+		JPanel panel = logementManger.addLogement();
+
+		frame.add(panel);
+		//frame.pack();
+		frame.setVisible(true);
+
+	
 	}
 
 	static void listerMenu() {
