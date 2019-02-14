@@ -65,6 +65,8 @@ public final class AirBnBData {
         logements.add(new Maison(hotes.get(idHote), tarif, adresse, superficie, nbVoyageur, superficieJardin, possedePisicine));
     }
 
+
+
     public ArrayList<Voyageur> getVoyageurs() {
         return voyageurs;
     }

@@ -49,7 +49,7 @@ public class Menu {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-		JPanel panel = logementManger.addLogement();
+		JPanel panel = logementManger.deleteLogement();
 
 		frame.add(panel);
 		//frame.pack();
