@@ -29,7 +29,6 @@ public class GestionHotes {
 			case 1:
 				break;
 			case 2:
-				supprimerHote();
 				break;
 			case 3:
 				Menu.listerMenu();
@@ -56,18 +55,7 @@ public class GestionHotes {
 
 	}
 
-	private static void supprimerHote() throws InputMismatchException, IndexOutOfBoundsException {
-
-		System.out.println("-------------------------------------");
-		System.out.println("Supprimer un hôte");
-
-		System.out.print("Numéro : ");
-		int numero = Menu.scanner.nextInt();
-		System.out.println();
-
-		Menu.listHotes.remove(numero);
-
-		System.out.println("Votre hôte a été supprimé avec succés");
-		listerHotes();
+	public static void supprimerHote(int id) throws InputMismatchException, IndexOutOfBoundsException {
+		AirBnBData.getInstance().getHotes().remove(id);
 	}
 }

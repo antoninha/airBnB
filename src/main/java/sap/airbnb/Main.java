@@ -3,11 +3,14 @@ package sap.airbnb;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import sap.airbnb.data.AirBnBData;
 import sap.airbnb.data.Search;
 import sap.airbnb.frame.AirbnbFrame;
+import sap.airbnb.frame.panelHote.PanelHoteAjout;
+import sap.airbnb.frame.panelHote.PanelHoteListe;
+import sap.airbnb.frame.panelHote.PanelHoteSupprime;
 import sap.airbnb.logements.Logement;
 import sap.airbnb.utilisateurs.Voyageur;
 import sap.airbnb.reservations.*;
@@ -44,8 +47,8 @@ public class Main {
         reservation.afficher();
         */
 
-        AirbnbFrame airbnbFrame = new AirbnbFrame();
-        
+        JFrame airbnbFrame = new JFrame();
+        airbnbFrame.add(new PanelHoteAjout());
         airbnbFrame.setVisible(true);
     }
 }

@@ -11,6 +11,8 @@ import sap.airbnb.frame.panelHote.PanelHoteListe;
 /**
  * MenuBar
  */
+
+
 public class MenuBar extends JMenuBar {
 
     private JMenu fileMenu;
@@ -63,7 +65,7 @@ public class MenuBar extends JMenuBar {
 
                     AirbnbFrame airbnbFrame = ((AirbnbFrame)getTopLevelAncestor());
 
-                    airbnbFrame.setMainPanel(new PanelHoteListe());
+                   // airbnbFrame.setMainPanel(new PanelHoteListe());
                 }
             });
             addHostMenuItem = new JMenuItem("Ajouter");
@@ -100,4 +102,6 @@ public class MenuBar extends JMenuBar {
             subResvMenuItem = new JMenuItem("Supprimer");
             resvMenu.add(subResvMenuItem);
     }
+
 }
+

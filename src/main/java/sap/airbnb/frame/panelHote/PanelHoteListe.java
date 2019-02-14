@@ -22,13 +22,14 @@ public class PanelHoteListe extends JPanel{
             add(labelHote.get(i));
             Hote hote = AirBnBData.getInstance().getHotes().get(i);
             labelHote.get(i).setText(
-                      "Hôte n°" + i
-                    + "/Prénom : " + hote.getPrenom()
-                    + "/Nom : " + hote.getNom()
-                    + "/Age : " + hote.getAge()
-                    + "/Delai de réponse : " + hote.getDelaiReponse()
+                      "Hôte n°" + (i + 1)
+                    + ": " + hote.getPrenom()
+                    + " " + hote.getNom()
+                    + " " +"(" + hote.getAge() + ")"
+                    + " " +"s'engage à répondre dans les " + hote.getDelaiReponse() + " heure(s)."
             );
 
         }
     }
+
 }
