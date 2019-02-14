@@ -56,6 +56,14 @@ public final class AirBnBData {
     public ArrayList<Logement> getLogements() {
         return logements;
     }
+    public void addAppartement(int idHote, int tarif, String adresse, int superficie, int nbVoyageur, int superficieBalcon, int numeroEtage){
+        logements.add(new Appartement(hotes.get(idHote), tarif, adresse, superficie, nbVoyageur, superficieBalcon, numeroEtage));
+
+    }
+
+    public void addMaison(int idHote, int tarif, String adresse, int superficie, int nbVoyageur,int superficieJardin, boolean possedePisicine){
+        logements.add(new Maison(hotes.get(idHote), tarif, adresse, superficie, nbVoyageur, superficieJardin, possedePisicine));
+    }
 
     public ArrayList<Voyageur> getVoyageurs() {
         return voyageurs;

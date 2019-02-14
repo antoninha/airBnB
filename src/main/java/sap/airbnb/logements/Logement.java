@@ -26,6 +26,12 @@ public abstract class Logement {
 		System.out.println(".");
 	}
 
+	public String toString(){
+		String logementString;
+		logementString = "tarif : " + tarifParNuit+ "€, situer à " + adresse + superficie+ " pour " + nbVoyageursMax+" maximum.";
+		return logementString ;
+	}
+
 	public int getTarifParNuit() {
 		return tarifParNuit;
 	}
