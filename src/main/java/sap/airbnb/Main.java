@@ -47,8 +47,8 @@ public class Main {
         reservation.afficher();
         */
 
-        JFrame airbnbFrame = new JFrame();
-        airbnbFrame.add(new PanelHoteAjout());
+        AirbnbFrame airbnbFrame = new AirbnbFrame();
+
         airbnbFrame.setVisible(true);
     }
 }

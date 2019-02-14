@@ -47,10 +47,6 @@ public class GestionHotes {
 	public static void ajouterHote(String prenom, String nom, int age, int delaisReponse) throws InputMismatchException {
 
 		Hote newHote = new Hote(prenom, nom, age, delaisReponse);
-		System.out.println(prenom);
-		System.out.println(nom);
-		System.out.println(age);
-		System.out.println(delaisReponse);
 		AirBnBData.getInstance().getHotes().add(newHote);
 
 	}

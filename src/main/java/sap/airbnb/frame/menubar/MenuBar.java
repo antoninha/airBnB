@@ -172,6 +172,10 @@ public class MenuBar extends JMenuBar {
                     
                     airbnbFrame.setContentPane(new PanelHoteAjout());
                 }
+                if (item == subHostMenuItem) {
+
+                    airbnbFrame.setContentPane(new PanelHoteSupprime());
+                }
                 if (item == listHomeMenuItem) {
 
                     airbnbFrame.setContentPane(LogementManager.getLogementList());
