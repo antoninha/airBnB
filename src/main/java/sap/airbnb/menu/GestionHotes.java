@@ -3,6 +3,7 @@ package sap.airbnb.menu;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import sap.airbnb.data.AirBnBData;
 import sap.airbnb.utilisateurs.Hote;
 
 public class GestionHotes {
@@ -26,7 +27,6 @@ public class GestionHotes {
 		try {
 			switch (Menu.choix(3)) {
 			case 1:
-				ajouterHote();
 				break;
 			case 2:
 				supprimerHote();
@@ -45,26 +45,15 @@ public class GestionHotes {
 		}
 	}
 
-	private static void ajouterHote() throws InputMismatchException {
-
-		System.out.println("-------------------------------------");
-		System.out.println("Ajouter un nouvel hôte");
-
-		System.out.print("Prénom : ");
-		String prenom = Menu.scanner.next();
-		System.out.print("Nom : ");
-		String nom = Menu.scanner.next();
-		System.out.print("Age : ");
-		int age = Menu.scanner.nextInt();
-		System.out.print("Temps de réponse (heure) : ");
-		int delaisReponse = Menu.scanner.nextInt();
-		System.out.println();
+	public static void ajouterHote(String prenom, String nom, int age, int delaisReponse) throws InputMismatchException {
 
 		Hote newHote = new Hote(prenom, nom, age, delaisReponse);
-		Menu.listHotes.add(newHote);
+		System.out.println(prenom);
+		System.out.println(nom);
+		System.out.println(age);
+		System.out.println(delaisReponse);
+		AirBnBData.getInstance().getHotes().add(newHote);
 
-		System.out.println("Votre hôte a été ajouté avec succés");
-		listerHotes();
 	}
 
 	private static void supprimerHote() throws InputMismatchException, IndexOutOfBoundsException {
