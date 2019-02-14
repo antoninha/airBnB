@@ -7,6 +7,7 @@ import javax.swing.*;
 
 import sap.airbnb.frame.AirbnbFrame;
 import sap.airbnb.frame.panelHote.*;
+import sap.airbnb.frame.panelLogement.LogementManager;
 
 /**
  * MenuBar
@@ -154,21 +155,30 @@ public class MenuBar extends JMenuBar {
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            if ((JMenuItem)e.getSource() == quitFileMenuItem) {
+            JMenuItem item = (JMenuItem)e.getSource();
+            AirbnbFrame airbnbFrame = ((AirbnbFrame)getTopLevelAncestor());
+
+            if (item == quitFileMenuItem) {
                 
-                ((JFrame)getTopLevelAncestor()).dispose();
+                airbnbFrame.dispose();
             }
             else {
 
-                AirbnbFrame airbnbFrame = ((AirbnbFrame)getTopLevelAncestor());
-
-                if ((JMenuItem)e.getSource() == listHostMenuItem) {
+                if (item == listHostMenuItem) {
                     
                     airbnbFrame.setContentPane(new PanelHoteListe());
                 }
-                if ((JMenuItem)e.getSource() == addHostMenuItem) {
+                if (item == addHostMenuItem) {
                     
                     airbnbFrame.setContentPane(new PanelHoteAjout());
+                }
+                if (item == listHomeMenuItem) {
+
+                    airbnbFrame.setContentPane(LogementManager.getLogementList());
+                }
+                if (item == addHomeMenuItem) {
+
+                    airbnbFrame.setContentPane(LogementManager.addLogement());
                 }
                 airbnbFrame.setVisible(true);
             }

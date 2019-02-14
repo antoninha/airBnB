@@ -6,14 +6,13 @@ import javax.swing.border.EmptyBorder;
 import sap.airbnb.data.AirBnBData;
 import sap.airbnb.logements.Logement;
 import sap.airbnb.menu.Menu;
-import sun.jvm.hotspot.types.JIntField;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class LogementManager {
+public final class LogementManager {
 
     static BoxLayout box;
     static AirBnBData Data;
@@ -21,7 +20,7 @@ public class LogementManager {
     ///////////////////////////////////////
     //          LISTE LOGEMENT PANEL
     //
-    public JPanel getLogementList(){
+    public static JPanel getLogementList(){
 
         JPanel panel = new JPanel();
         AirBnBData data = AirBnBData.getInstance();
@@ -40,7 +39,7 @@ public class LogementManager {
     //          AJOUT LOGEMENT PANEL
     //
 
-    public JPanel addLogement(){
+    public static JPanel addLogement(){
 
         JPanel main = new JPanel();
         JPanel panel = new JPanel();
@@ -320,7 +319,7 @@ public class LogementManager {
 
     }
 
-    private boolean checkInt(String stringToTest){
+    private static boolean checkInt(String stringToTest){
         try{
            Integer.parseInt(stringToTest);
            return true;
@@ -332,7 +331,7 @@ public class LogementManager {
 
     }
 
-    private boolean checkHote(String idHote){
+    private static boolean checkHote(String idHote){
         try{
             Data.getHotes().get(Integer.parseInt(idHote));
             return true;
@@ -341,6 +340,5 @@ public class LogementManager {
             return false;
         }
     }
-
 
 }
