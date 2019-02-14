@@ -1,10 +1,9 @@
 package sap.airbnb.frame.panelHote;
 
-import sun.tools.jps.Jps;
-
 import javax.swing.*;
 
 public class PanelHoteAjout extends JPanel {
+
     private JPanel panelListeHote = new JPanel();
     private JTextField champTextePrenom = new JTextField("");
     private JTextField champTexteNom = new JTextField("");
@@ -19,32 +18,32 @@ public class PanelHoteAjout extends JPanel {
 
     public PanelHoteAjout() {
 
-        panelListeHote.add(labelPrenom);
-        panelListeHote.add(champTextePrenom);
+        add(labelPrenom);
+        add(champTextePrenom);
 
-        panelListeHote.add(labelNom);
-        panelListeHote.add(champTexteNom);
+        add(labelNom);
+        add(champTexteNom);
 
-        panelListeHote.add(labelAge);
-        panelListeHote.add(champTexteAge);
+        add(labelAge);
+        add(champTexteAge);
 
-        panelListeHote.add(labelDelaiReponse);
-        panelListeHote.add(champTexteDelaiReponse);
+        add(labelDelaiReponse);
+        add(champTexteDelaiReponse);
 
-        panelListeHote.add(btnValider);
-        panelListeHote.add(btnAnnuler);
+        add(btnValider);
+        add(btnAnnuler);
 
         ListenerBtnAjout clicBtnAjouter = new ListenerBtnAjout(
-                champTextePrenom.getText(),
-                champTextePrenom.getText(),
-                Integer.parseInt(champTexteAge.getText()),
-                Integer.parseInt(champTexteDelaiReponse.getText())
+            champTextePrenom.getText(),
+            champTextePrenom.getText(),
+            Integer.parseInt(champTexteAge.getText()),
+            Integer.parseInt(champTexteDelaiReponse.getText())
         );
-            btnValider.addActionListener(clicBtnAjouter);
+        btnValider.addActionListener(clicBtnAjouter);
     }
 
     public JPanel getPanelListeHote() {
+
         return panelListeHote;
     }
-
 }

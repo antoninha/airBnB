@@ -12,6 +12,7 @@ public class ListenerBtnAjout implements ActionListener {
 
 
     public ListenerBtnAjout(String prenom, String nom, int age, int delaiReponse) {
+        
         this.prenom = prenom;
         this.nom = nom;
         this.age = age;

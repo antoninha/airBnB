@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class PanelHoteListe extends JPanel{
+public class PanelHoteListe extends JPanel {
 
     private int nbHotes = AirBnBData.getInstance().getHotes().size();
     private ArrayList<JLabel> labelHote = new ArrayList<>();

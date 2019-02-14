@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import sap.airbnb.frame.AirbnbFrame;
-import sap.airbnb.frame.panelHote.PanelHoteListe;
+import sap.airbnb.frame.panelHote.*;
 
 /**
  * MenuBar
@@ -37,67 +37,141 @@ public class MenuBar extends JMenuBar {
         private JMenuItem subResvMenuItem;
         private JMenuItem listResvMenuItem;
 
+    private ItemListener itemListener;
+
     public MenuBar() {
         
         fileMenu = new JMenu("Fichier");
-        add(fileMenu);
             quitFileMenuItem = new JMenuItem("Quitter");
-            fileMenu.add(quitFileMenuItem);
-            quitFileMenuItem.addActionListener(new ActionListener() {
-            
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    
-                    ((JFrame)getTopLevelAncestor()).dispose();
-                }
-            });
 
         hostMenu = new JMenu("Hotes");
-        add(hostMenu);
             listHostMenuItem = new JMenuItem("Lister");
-            hostMenu.add(listHostMenuItem);
-            listHostMenuItem.addActionListener(new ActionListener() {
-            
-                @Override
-                public void actionPerformed(ActionEvent e) {
-
-                    AirbnbFrame airbnbFrame = ((AirbnbFrame)getTopLevelAncestor());
-
-                    airbnbFrame.setMainPanel(new PanelHoteListe());
-                }
-            });
             addHostMenuItem = new JMenuItem("Ajouter");
-            hostMenu.add(addHostMenuItem);
             subHostMenuItem = new JMenuItem("Supprimer");
-            hostMenu.add(subHostMenuItem);
 
         homeMenu = new JMenu("Logements");
-        add(homeMenu);
             listHomeMenuItem = new JMenuItem("Lister");
-            homeMenu.add(listHomeMenuItem);
             addHomeMenuItem = new JMenuItem("Ajouter");
-            homeMenu.add(addHomeMenuItem);
             subHomeMenuItem = new JMenuItem("Supprimer");
-            homeMenu.add(subHomeMenuItem);
 
         stayMenu = new JMenu("Séjours");
-        add(stayMenu);
             searchStayMenuItem = new JMenuItem("Rechercher");
-            stayMenu.add(searchStayMenuItem);
             listStayMenuItem = new JMenuItem("Lister");
-            stayMenu.add(listStayMenuItem);
             addStayMenuItem = new JMenuItem("Ajouter");
-            stayMenu.add(addStayMenuItem);
             subStayMenuItem = new JMenuItem("Supprimer");
-            stayMenu.add(subStayMenuItem);
 
         resvMenu = new JMenu("Réservations");
-        add(resvMenu);
             listResvMenuItem = new JMenuItem("Lister");
-            resvMenu.add(listResvMenuItem);
             addResvMenuItem = new JMenuItem("Ajouter");
-            resvMenu.add(addResvMenuItem);
             subResvMenuItem = new JMenuItem("Supprimer");
-            resvMenu.add(subResvMenuItem);
+
+        itemListener = new ItemListener();
+
+        activeMenuBar();
+    }
+
+    private void activeMenuBar() {
+
+        activeFileMenu();
+        activeHostMenu();
+        activeHomeMenu();
+        activeStayMenu();
+        activeResvMenu();
+    }
+
+    private void activeFileMenu() {
+
+        add(fileMenu);
+
+        fileMenu.add(quitFileMenuItem);
+        quitFileMenuItem.addActionListener(itemListener);
+    }
+
+    private void activeHostMenu() {
+    
+        add(hostMenu);
+
+        hostMenu.add(listHostMenuItem);
+        listHostMenuItem.addActionListener(itemListener);
+
+        hostMenu.add(addHostMenuItem);
+        addHostMenuItem.addActionListener(itemListener);
+
+        hostMenu.add(subHostMenuItem); 
+        subHostMenuItem.addActionListener(itemListener);
+    }
+
+    private void activeHomeMenu() {
+    
+        add(homeMenu);
+        
+        homeMenu.add(listHomeMenuItem);
+        listHomeMenuItem.addActionListener(itemListener);
+
+        homeMenu.add(addHomeMenuItem);
+        addHomeMenuItem.addActionListener(itemListener);
+
+        homeMenu.add(subHomeMenuItem); 
+        subHomeMenuItem.addActionListener(itemListener);
+    }
+
+    private void activeStayMenu() {
+    
+        add(stayMenu);
+        
+        stayMenu.add(searchStayMenuItem);
+        searchStayMenuItem.addActionListener(itemListener);
+
+        stayMenu.add(listStayMenuItem);
+        listStayMenuItem.addActionListener(itemListener);
+
+        stayMenu.add(addStayMenuItem);
+        addStayMenuItem.addActionListener(itemListener);
+
+        stayMenu.add(subStayMenuItem); 
+        subStayMenuItem.addActionListener(itemListener);
+    }
+
+    private void activeResvMenu() {
+    
+        add(resvMenu);
+        
+        resvMenu.add(listResvMenuItem);
+        listResvMenuItem.addActionListener(itemListener);
+
+        resvMenu.add(addResvMenuItem);
+        addResvMenuItem.addActionListener(itemListener);
+
+        resvMenu.add(subResvMenuItem); 
+        subResvMenuItem.addActionListener(itemListener);
+    }
+
+    /**
+     * ItemListener
+     */
+    private class ItemListener implements ActionListener {
+    
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            if ((JMenuItem)e.getSource() == quitFileMenuItem) {
+                
+                ((JFrame)getTopLevelAncestor()).dispose();
+            }
+            else {
+
+                AirbnbFrame airbnbFrame = ((AirbnbFrame)getTopLevelAncestor());
+
+                if ((JMenuItem)e.getSource() == listHostMenuItem) {
+                    
+                    airbnbFrame.setContentPane(new PanelHoteListe());
+                }
+                if ((JMenuItem)e.getSource() == addHostMenuItem) {
+                    
+                    airbnbFrame.setContentPane(new PanelHoteAjout());
+                }
+                airbnbFrame.setVisible(true);
+            }
+        }
     }
 }
