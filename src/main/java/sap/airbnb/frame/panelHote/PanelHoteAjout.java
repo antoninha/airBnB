@@ -50,8 +50,6 @@ public class PanelHoteAjout extends  JPanel{
         add(panelBtn);
 
         ListenerBtnAjout clicBtnAjouter = new ListenerBtnAjout(champTextePrenom,champTexteNom,champTexteAge,champTexteDelaiReponse);
-            btnValider.addActionListener(clicBtnAjouter);
+        btnValider.addActionListener(clicBtnAjouter);
     }
-
-
 }
