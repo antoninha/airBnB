@@ -47,7 +47,9 @@ public final class AirBnBData {
         hotes.add(new Hote("Maurice", "Meunier", 46, 12));
 
         // Voyageurs
-        voyageurs.add(new Voyageur("Albert", "Jean", 21));
+        voyageurs.add(new Voyageur("ALBERT", "Jean", 21));
+        voyageurs.add(new Voyageur("DURANT", "Marcel", 75));
+        voyageurs.add(new Voyageur("HIKET", "Colette", 63));
 
 
 
@@ -58,7 +60,7 @@ public final class AirBnBData {
         logements.add(new Appartement(hotes.get(1), 100, "85 rue Colbert, 37000 Tours", 100, 6, 0, 3));
         logements.add(new Maison(hotes.get(0), 40, "18 Bis rue Romain Rolland, 37230 Fondettes", 140, 10, 500, false));
         logements.add(new Maison(hotes.get(3), 35, "146 Rue George Sand, 59553 Cuincy", 120, 2, 0, false));
-        logements.add(new Maison(hotes.get(5), 60, "13 Rue de la LibertÈ, 62800 LiÈvin", 90, 4, 2000, true));
+        logements.add(new Maison(hotes.get(5), 60, "13 Rue de la Liberté, 62800 Liévin", 90, 4, 2000, true));
         logements.add(new Appartement(hotes.get(2), 35, "46 Rue des Canonniers, 59800 Lille", 72, 2, 3, 20));
         logements.add(new Appartement(hotes.get(4), 35, "111 Rue Colbert, 37000 Tours", 42, 2, 12, 0));
 
@@ -95,7 +97,6 @@ public final class AirBnBData {
 
     public void addAppartement(int idHote, int tarif, String adresse, int superficie, int nbVoyageur, int superficieBalcon, int numeroEtage){
         logements.add(new Appartement(hotes.get(idHote), tarif, adresse, superficie, nbVoyageur, superficieBalcon, numeroEtage));
-
     }
 
     public void addMaison(int idHote, int tarif, String adresse, int superficie, int nbVoyageur,int superficieJardin, boolean possedePisicine){

@@ -8,6 +8,7 @@ import javax.swing.*;
 import sap.airbnb.frame.AirbnbFrame;
 import sap.airbnb.frame.panelHote.*;
 import sap.airbnb.frame.panelLogement.LogementManager;
+import sap.airbnb.frame.panelvoyageur.*;
 
 /**
  * MenuBar
@@ -20,23 +21,23 @@ public class MenuBar extends JMenuBar {
     private JMenu hostMenu;
         private JMenuItem addHostMenuItem;
         private JMenuItem subHostMenuItem;
-        private JMenuItem listHostMenuItem;
+        private JMenuItem lstHostMenuItem;
 
     private JMenu homeMenu;
         private JMenuItem addHomeMenuItem;
         private JMenuItem subHomeMenuItem;
-        private JMenuItem listHomeMenuItem;
+        private JMenuItem lstHomeMenuItem;
 
-    private JMenu stayMenu;
-        private JMenuItem addStayMenuItem;
-        private JMenuItem subStayMenuItem;
-        private JMenuItem listStayMenuItem;
-        private JMenuItem searchStayMenuItem;
+    private JMenu trvlMenu;
+        private JMenuItem addTrvlMenuItem;
+        private JMenuItem subTrvlMenuItem;
+        private JMenuItem lstTrvlMenuItem;
 
     private JMenu resvMenu;
+        private JMenuItem stsResvMenuItem;
         private JMenuItem addResvMenuItem;
         private JMenuItem subResvMenuItem;
-        private JMenuItem listResvMenuItem;
+        private JMenuItem lstResvMenuItem;
 
     private ItemListener itemListener;
 
@@ -46,23 +47,23 @@ public class MenuBar extends JMenuBar {
             quitFileMenuItem = new JMenuItem("Quitter");
 
         hostMenu = new JMenu("Hotes");
-            listHostMenuItem = new JMenuItem("Lister");
+            lstHostMenuItem = new JMenuItem("Lister");
             addHostMenuItem = new JMenuItem("Ajouter");
             subHostMenuItem = new JMenuItem("Supprimer");
 
         homeMenu = new JMenu("Logements");
-            listHomeMenuItem = new JMenuItem("Lister");
+            lstHomeMenuItem = new JMenuItem("Lister");
             addHomeMenuItem = new JMenuItem("Ajouter");
             subHomeMenuItem = new JMenuItem("Supprimer");
 
-        stayMenu = new JMenu("Séjours");
-            searchStayMenuItem = new JMenuItem("Rechercher");
-            listStayMenuItem = new JMenuItem("Lister");
-            addStayMenuItem = new JMenuItem("Ajouter");
-            subStayMenuItem = new JMenuItem("Supprimer");
+        trvlMenu = new JMenu("Voyageurs");
+            lstTrvlMenuItem = new JMenuItem("Lister");
+            addTrvlMenuItem = new JMenuItem("Ajouter");
+            subTrvlMenuItem = new JMenuItem("Supprimer");
 
         resvMenu = new JMenu("Réservations");
-            listResvMenuItem = new JMenuItem("Lister");
+            stsResvMenuItem = new JMenuItem("Rechercher séjour");
+            lstResvMenuItem = new JMenuItem("Lister");
             addResvMenuItem = new JMenuItem("Ajouter");
             subResvMenuItem = new JMenuItem("Supprimer");
 
@@ -76,7 +77,7 @@ public class MenuBar extends JMenuBar {
         activeFileMenu();
         activeHostMenu();
         activeHomeMenu();
-        activeStayMenu();
+        activeTrvlMenu();
         activeResvMenu();
     }
 
@@ -92,8 +93,8 @@ public class MenuBar extends JMenuBar {
     
         add(hostMenu);
 
-        hostMenu.add(listHostMenuItem);
-        listHostMenuItem.addActionListener(itemListener);
+        hostMenu.add(lstHostMenuItem);
+        lstHostMenuItem.addActionListener(itemListener);
 
         hostMenu.add(addHostMenuItem);
         addHostMenuItem.addActionListener(itemListener);
@@ -106,8 +107,8 @@ public class MenuBar extends JMenuBar {
     
         add(homeMenu);
         
-        homeMenu.add(listHomeMenuItem);
-        listHomeMenuItem.addActionListener(itemListener);
+        homeMenu.add(lstHomeMenuItem);
+        lstHomeMenuItem.addActionListener(itemListener);
 
         homeMenu.add(addHomeMenuItem);
         addHomeMenuItem.addActionListener(itemListener);
@@ -116,29 +117,29 @@ public class MenuBar extends JMenuBar {
         subHomeMenuItem.addActionListener(itemListener);
     }
 
-    private void activeStayMenu() {
+    private void activeTrvlMenu() {
     
-        add(stayMenu);
+        add(trvlMenu);
         
-        stayMenu.add(searchStayMenuItem);
-        searchStayMenuItem.addActionListener(itemListener);
+        trvlMenu.add(lstTrvlMenuItem);
+        lstTrvlMenuItem.addActionListener(itemListener);
 
-        stayMenu.add(listStayMenuItem);
-        listStayMenuItem.addActionListener(itemListener);
+        trvlMenu.add(addTrvlMenuItem);
+        addTrvlMenuItem.addActionListener(itemListener);
 
-        stayMenu.add(addStayMenuItem);
-        addStayMenuItem.addActionListener(itemListener);
-
-        stayMenu.add(subStayMenuItem); 
-        subStayMenuItem.addActionListener(itemListener);
+        trvlMenu.add(subTrvlMenuItem);
+        subTrvlMenuItem.addActionListener(itemListener);
     }
 
     private void activeResvMenu() {
     
         add(resvMenu);
         
-        resvMenu.add(listResvMenuItem);
-        listResvMenuItem.addActionListener(itemListener);
+        resvMenu.add(stsResvMenuItem);
+        stsResvMenuItem.addActionListener(itemListener);
+
+        resvMenu.add(lstResvMenuItem);
+        lstResvMenuItem.addActionListener(itemListener);
 
         resvMenu.add(addResvMenuItem);
         addResvMenuItem.addActionListener(itemListener);
@@ -164,7 +165,7 @@ public class MenuBar extends JMenuBar {
             }
             else {
 
-                if (item == listHostMenuItem) {
+                if (item == lstHostMenuItem) {
                     
                     airbnbFrame.setContentPane(new PanelHoteListe());
                 }
@@ -176,7 +177,7 @@ public class MenuBar extends JMenuBar {
 
                     airbnbFrame.setContentPane(new PanelHoteSupprime());
                 }
-                if (item == listHomeMenuItem) {
+                if (item == lstHomeMenuItem) {
 
                     airbnbFrame.setContentPane(LogementManager.getLogementList());
                 }
@@ -187,6 +188,14 @@ public class MenuBar extends JMenuBar {
                 if (item == subHomeMenuItem) {
 
                     airbnbFrame.setContentPane(LogementManager.deleteLogement());
+                }
+                if (item == lstTrvlMenuItem) {
+
+                    airbnbFrame.setContentPane(new PanelVoyageurListe());
+                }
+                if (item == addTrvlMenuItem) {
+
+                    airbnbFrame.setContentPane(new PanelVoyageurAjout());
                 }
                 airbnbFrame.setVisible(true);
             }
