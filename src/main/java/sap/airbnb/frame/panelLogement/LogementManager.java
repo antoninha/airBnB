@@ -377,7 +377,7 @@ public final class LogementManager {
 
     // PARTIE FONCTION
 
-    private static JComboBox loadLogement(){
+    public static JComboBox loadLogement(){
 
         String logementInter = "";
         String[] logementFormated = new String[data.getLogements().size()];
@@ -411,7 +411,7 @@ public final class LogementManager {
 
     }
 
-    private static boolean checkInt(String stringToTest){
+    public static boolean checkInt(String stringToTest){
         try{
            Integer.parseInt(stringToTest);
            return true;

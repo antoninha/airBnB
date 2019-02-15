@@ -1,12 +1,10 @@
 package sap.airbnb.frame.panelReservation;
 
-import com.sun.tools.javac.tree.JCTree;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 import sap.airbnb.data.AirBnBData;
 import sap.airbnb.frame.panelLogement.LogementManager;
-import sap.airbnb.logements.Logement;
 import sap.airbnb.menu.GestionReservations;
 import sap.airbnb.reservations.*;
 import sap.airbnb.utilisateurs.Voyageur;

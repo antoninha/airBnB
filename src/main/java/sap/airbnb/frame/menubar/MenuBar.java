@@ -8,6 +8,8 @@ import javax.swing.*;
 import sap.airbnb.frame.AirbnbFrame;
 import sap.airbnb.frame.panelHote.*;
 import sap.airbnb.frame.panelLogement.LogementManager;
+
+import sap.airbnb.frame.panelReservation.reservationManager;
 import sap.airbnb.frame.panelvoyageur.*;
 
 /**
@@ -197,6 +199,19 @@ public class MenuBar extends JMenuBar {
 
                     airbnbFrame.setContentPane(new PanelVoyageurAjout());
                 }
+                if (item == lstResvMenuItem) {
+
+                    airbnbFrame.setContentPane(reservationManager.getReservationList());
+                }
+                if (item == addResvMenuItem) {
+
+                    airbnbFrame.setContentPane(reservationManager.addReservation());
+                }
+                if (item == subResvMenuItem) {
+
+                    airbnbFrame.setContentPane(reservationManager.deleteReservation());
+                }
+
                 airbnbFrame.setVisible(true);
             }
         }
