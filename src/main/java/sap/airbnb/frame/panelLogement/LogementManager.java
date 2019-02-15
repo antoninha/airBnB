@@ -8,7 +8,6 @@ import sap.airbnb.logements.Logement;
 import sap.airbnb.menu.GestionLogements;
 import sap.airbnb.menu.Menu;
 import sap.airbnb.utilisateurs.Hote;
-import sun.jvm.hotspot.types.JIntField;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
