@@ -1,10 +1,12 @@
 package sap.airbnb.menu;
 
+import sap.airbnb.data.AirBnBData;
 import sap.airbnb.logements.Appartement;
 import sap.airbnb.logements.Maison;
 
 public class GestionLogements {
 
+	static AirBnBData data = AirBnBData.getInstance();
 	static void listerLogements() {
 
 		System.out.println("-------------------------------------");
@@ -24,13 +26,13 @@ public class GestionLogements {
 
 			switch (Menu.choix(3)) {
 			case 1:
-				ajouterLogement();
+				//ajouterLogement();
 				break;
 			case 2:
-				supprimerLogement();
+				//supprimerLogement();
 				break;
 			case 3:
-				Menu.listerMenu();
+				//Menu.listerMenu();
 				break;
 			}
 
@@ -144,20 +146,14 @@ public class GestionLogements {
 		listerLogements();
 	}
 
-	private static void supprimerLogement() throws IndexOutOfBoundsException {
+	public static void supprimerLogement(int idLogemement) throws IndexOutOfBoundsException {
 
-		System.out.println("-------------------------------------");
-		System.out.println("Supprimer un logement");
 
-		System.out.print("Numéro : ");
-		int numero = Menu.scanner.nextInt();
-		System.out.println();
-
-		Menu.listLogements.remove(numero);
+		AirBnBData.getInstance().getLogements().remove(idLogemement);
 
 		System.out.println("Votre logement a été supprimé avec succés");
 
-		listerLogements();
+		//listerLogements();
 	}
 
 }

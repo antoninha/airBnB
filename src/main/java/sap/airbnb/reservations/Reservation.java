@@ -54,6 +54,10 @@ public class Reservation implements Cloneable {
 		return sejour;
 	}
 
+	public Voyageur getVoyageur() {
+		return voyageur;
+	}
+
 	@Override
 	public Object clone()  {
 
