@@ -8,7 +8,6 @@ import sap.airbnb.logements.Logement;
 import sap.airbnb.menu.GestionLogements;
 import sap.airbnb.menu.Menu;
 import sap.airbnb.utilisateurs.Hote;
-import sun.jvm.hotspot.types.JIntField;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -46,7 +45,7 @@ public final class LogementManager {
         JPanel main = new JPanel();
         JPanel panel = new JPanel();
         JPanel panel2 = new JPanel();
-
+        panel2.setMaximumSize(panel2.getPreferredSize());
         JPanel panel3 = new JPanel();
         JPanel panel4 = new JPanel();
         JPanel panel5 = new JPanel();
@@ -64,13 +63,14 @@ public final class LogementManager {
 
 
         // Panel1 ID HOTE
-        JLabel idHote = new JLabel("Id de l'hote :");
+        JLabel idHote = new JLabel("Hote : ");
+        JComboBox<Hote> idHoteBox = loadHote();
 
         JTextField idHoteText = new JTextField();
         idHoteText.setColumns(7);
 
         panel.add(idHote);
-        panel.add(idHoteText);
+        panel.add(idHoteBox);
         panel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         // PANEL2 TARIF
@@ -193,9 +193,8 @@ public final class LogementManager {
                 // SI TOUT LES CHAMPS DE LOGEMENT SONT REMPLIS
 
                 if(checkInt(nbVoyageurMaxText.getText())  && checkInt(superficieText.getText()) &&
-                        adresseText.getText() != "" && checkInt(tarifParNuitText.getText()) &&
-                        checkInt(idHoteText.getText() ) && (br1.isSelected() || br2.isSelected())
-                        && checkHote(idHoteText.getText())
+                        adresseText.getText() != "" && checkInt(tarifParNuitText.getText()) && (br1.isSelected() || br2.isSelected())
+                        && checkHote(idHoteBox.getSelectedIndex())
                         )
 
 
@@ -203,7 +202,6 @@ public final class LogementManager {
                     int nbVoyageurInt = Integer.parseInt(nbVoyageurMaxText.getText());
                     int superficieInt = Integer.parseInt(superficieText.getText());
                     int tarifInt = Integer.parseInt(superficieText.getText());
-                    int idHoteInt = Integer.parseInt(idHoteText.getText());
 
                 if(br1.isSelected()){
                     if(checkInt(superficieJardinText.getText()) && (gp1.isSelected() || gp2.isSelected() )){
@@ -211,7 +209,7 @@ public final class LogementManager {
 
                         int superficieJardinInt = Integer.parseInt(superficieJardinText.getText());
 
-                        data.addMaison(idHoteInt,tarifInt,adresseText.getText(),
+                        data.addMaison(idHoteBox.getSelectedIndex(),tarifInt,adresseText.getText(),
                                 superficieInt,nbVoyageurInt,
                                 superficieJardinInt , gp1.isSelected() );
 
@@ -234,7 +232,7 @@ public final class LogementManager {
                        int superficieBalconInt = Integer.parseInt(superficieBalconText.getText());
                        int numAppartInt = Integer.parseInt(numAppartText.getText());
 
-                       data.addAppartement(idHoteInt,tarifInt,adresseText.getText(),
+                       data.addAppartement(idHoteBox.getSelectedIndex(),tarifInt,adresseText.getText(),
                                superficieInt,nbVoyageurInt,superficieBalconInt,numAppartInt);
 
                        for(Logement log : data.getLogements()){
@@ -353,7 +351,7 @@ public final class LogementManager {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                GestionLogements.supprimerLogement(comboLogement.getSelectedIndex());
+                GestionLogements.supprimerLogement(AirBnBData.getInstance().getLogements().get(comboLogement.getSelectedIndex()));
                 panel.remove(comboLogement);
 
                 comboLogement = loadLogement();
@@ -379,7 +377,7 @@ public final class LogementManager {
 
     // PARTIE FONCTION
 
-    public static JComboBox loadLogement(){
+    private static JComboBox loadLogement(){
 
         String logementInter = "";
         String[] logementFormated = new String[data.getLogements().size()];
@@ -396,7 +394,24 @@ public final class LogementManager {
 
     }
 
-    public static boolean checkInt(String stringToTest){
+    private static JComboBox loadHote(){
+
+        String hoteInter = "";
+        String[] hoteFormated = new String[data.getHotes().size()];
+        int iteration = 0;
+        for(Hote hote : data.getHotes()){
+
+            hoteInter = hote.getPrenom() + " " + hote.getNom();
+            hoteFormated[iteration] = hoteInter;
+
+            iteration++;
+        }
+        JComboBox comboBox = new JComboBox(hoteFormated);
+        return comboBox;
+
+    }
+
+    private static boolean checkInt(String stringToTest){
         try{
            Integer.parseInt(stringToTest);
            return true;
@@ -408,9 +423,10 @@ public final class LogementManager {
 
     }
 
-    private static boolean checkHote(String idHote){
+    private static boolean checkHote(int idHote){
         try{
-            data.getHotes().get(Integer.parseInt(idHote));
+
+            data.getHotes().get(idHote);
             return true;
         }
         catch(Exception e){

@@ -1,5 +1,7 @@
 package sap.airbnb.frame;
 
+import java.awt.Dimension;
+
 import javax.swing.*;
 
 import sap.airbnb.frame.menubar.MenuBar;
@@ -16,11 +18,10 @@ public class AirbnbFrame extends JFrame {
         menuBar = new MenuBar();
 
         setTitle("AirBnB");
-        setSize(800, 600);
+        setMinimumSize(new Dimension(800, 600));
         setLocationRelativeTo(null);
         setResizable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         setJMenuBar(menuBar);
     }
 }

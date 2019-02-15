@@ -9,27 +9,26 @@ import java.util.ArrayList;
 
 public class PanelHoteListe extends JPanel {
 
-    private int nbHotes = AirBnBData.getInstance().getHotes().size();
-    private ArrayList<JLabel> labelHote = new ArrayList<>();
+    //private ArrayList<JLabel> hotesLabel;
 
     public PanelHoteListe() {
-        for (int i = 0; i < nbHotes ; i++) {
-            labelHote.add(new JLabel());
-        }
+
+        int nbHotes = AirBnBData.getInstance().getHotes().size();
+
+        //hotesLabel = new ArrayList<>();
 
         setLayout(new GridLayout(nbHotes,1));
-        for (int i = 0; i < labelHote.size(); i++) {
-            add(labelHote.get(i));
-            Hote hote = AirBnBData.getInstance().getHotes().get(i);
-            labelHote.get(i).setText(
-                      "Hôte n°" + (i + 1)
-                    + ": " + hote.getPrenom()
-                    + " " + hote.getNom()
-                    + " " +"(" + hote.getAge() + ")"
-                    + " " +"s'engage à répondre dans les " + hote.getDelaiReponse() + " heure(s)."
-            );
 
+        for (Hote hote : AirBnBData.getInstance().getHotes()) {
+
+            JLabel hoteLabel = new JLabel(
+                hote.getPrenom()
+                + " " + hote.getNom()
+                + " " +"(" + hote.getAge() + " ans)"
+                + " " +"s'engage à répondre dans les " + hote.getDelaiReponse() + " heure(s)."
+            );
+            //hotesLabel.add(hoteLabel);
+            add(hoteLabel);
         }
     }
-
 }

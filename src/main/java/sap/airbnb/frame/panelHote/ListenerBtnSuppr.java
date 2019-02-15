@@ -1,5 +1,6 @@
 package sap.airbnb.frame.panelHote;
 
+import sap.airbnb.data.AirBnBData;
 import sap.airbnb.menu.GestionHotes;
 
 import javax.swing.*;
@@ -15,7 +16,7 @@ public class ListenerBtnSuppr implements ActionListener {
         JFrame frame = (JFrame) button.getTopLevelAncestor();
         PanelHoteSupprime panelHoteSupprime = (PanelHoteSupprime)button.getParent();
 
-        GestionHotes.supprimerHote(panelHoteSupprime.getIdSelect());
+        GestionHotes.supprimerHote(AirBnBData.getInstance().getHotes().get(panelHoteSupprime.getIdSelect()));
         frame.setContentPane(new PanelHoteSupprime());
         frame.setVisible(true);
     }

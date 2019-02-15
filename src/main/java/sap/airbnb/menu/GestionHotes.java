@@ -1,9 +1,12 @@
 package sap.airbnb.menu;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.Scanner;
 
 import sap.airbnb.data.AirBnBData;
+import sap.airbnb.logements.Logement;
 import sap.airbnb.utilisateurs.Hote;
 
 public class GestionHotes {
@@ -51,7 +54,24 @@ public class GestionHotes {
 
 	}
 
-	public static void supprimerHote(int id) throws InputMismatchException, IndexOutOfBoundsException {
-		AirBnBData.getInstance().getHotes().remove(id);
+	public static void supprimerHote(Hote hote) throws InputMismatchException, IndexOutOfBoundsException {
+
+		boolean logementASuppr = false;
+		ArrayList listeHote = AirBnBData.getInstance().getHotes();
+		ArrayList<Logement> listeLogementASuppr = new ArrayList<>();
+		listeHote.remove(hote);
+
+		for (Logement logement: AirBnBData.getInstance().getLogements()) {
+			if(logement.getHote() == hote){
+				listeLogementASuppr.add(logement);
+				logementASuppr = true;
+			}
+		}
+
+		if (logementASuppr){
+			for (int i = 0; i < listeLogementASuppr.size() ; i++) {
+				AirBnBData.getInstance().getLogements().remove(listeLogementASuppr.get(i));
+			}
+		}
 	}
 }
