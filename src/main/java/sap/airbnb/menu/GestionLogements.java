@@ -163,16 +163,16 @@ public class GestionLogements {
 		ArrayList<Reservation> listeReservationASuppr = new ArrayList<>();
 		AirBnBData.getInstance().getLogements().remove(logement);
 
-		for (Sejour sejour: AirBnBData.getInstance().) {
-			if(logement.getHote() == hote){
-				listeLogementASuppr.add(logement);
-				logementASuppr = true;
+		for (Reservation reservation: AirBnBData.getInstance().getReservations()) {
+			if(reservation.getSejour().getLogement() == logement){
+				listeReservationASuppr.add(reservation);
+				reservationASuppr = true;
 			}
 		}
 
-		if (logementASuppr){
-			for (int i = 0; i < listeLogementASuppr.size() ; i++) {
-				AirBnBData.getInstance().getLogements().remove(listeLogementASuppr.get(i));
+		if (reservationASuppr){
+			for (int i = 0; i < listeReservationASuppr.size() ; i++) {
+				AirBnBData.getInstance().getReservations().remove(listeReservationASuppr.get(i));
 			}
 		}
 
