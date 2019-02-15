@@ -60,6 +60,9 @@ public class PanelHoteAjout extends  JPanel{
         ListenerBtnAjout clicBtnAjouter = new ListenerBtnAjout(this);
         btnValider.addActionListener(clicBtnAjouter);
 
+        ListenerBtnAnl clicBtnAnl = new ListenerBtnAnl(this);
+        btnAnnuler .addActionListener(clicBtnAnl);
+
         ListenerKeyTextFieldAjout listenerKeyTextFieldAjout = new ListenerKeyTextFieldAjout(this);
         champTextePrenom.addKeyListener(listenerKeyTextFieldAjout);
         champTexteNom.addKeyListener(listenerKeyTextFieldAjout);
@@ -80,13 +83,8 @@ public class PanelHoteAjout extends  JPanel{
                 triggerError("Tous les champs doivent être renseignés");
             }else {
                 GestionHotes.ajouterHote(prenom, nom, age, delaiReponse);
-
-                champTexteNom.setText("");
-                champTextePrenom.setText("");
-                champTexteAge.setText("0");
-                champTexteDelaiReponse.setText("0");
-
-                labelErreur.setText("");
+                resetChamps();
+                triggerError("L'hôte a bien été ajouté");
             }
 
         }catch (NumberFormatException e){
@@ -100,5 +98,13 @@ public class PanelHoteAjout extends  JPanel{
         labelErreur.setText(msgErreur);
     }
 
+    public void resetChamps(){
+        champTexteNom.setText("");
+        champTextePrenom.setText("");
+        champTexteAge.setText("0");
+        champTexteDelaiReponse.setText("0");
+
+        labelErreur.setText("");
+    }
 
 }

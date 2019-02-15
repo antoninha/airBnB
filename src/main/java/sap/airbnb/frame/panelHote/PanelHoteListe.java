@@ -28,7 +28,7 @@ public class PanelHoteListe extends JPanel {
                     + " " +"(" + hote.getAge() + ")"
                     + " " +"s'engage à répondre dans les " + hote.getDelaiReponse() + " heure(s)."
             );
-            
+
         }
     }
 

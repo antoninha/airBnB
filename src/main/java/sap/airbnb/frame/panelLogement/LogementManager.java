@@ -5,7 +5,9 @@ import javax.swing.border.EmptyBorder;
 
 import sap.airbnb.data.AirBnBData;
 import sap.airbnb.logements.Logement;
+import sap.airbnb.menu.GestionLogements;
 import sap.airbnb.menu.Menu;
+import sap.airbnb.utilisateurs.Hote;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +17,7 @@ import java.awt.event.ActionListener;
 public final class LogementManager {
 
     static BoxLayout box;
-    static AirBnBData Data;
+    static AirBnBData data = AirBnBData.getInstance();
 
     ///////////////////////////////////////
     //          LISTE LOGEMENT PANEL
@@ -23,7 +25,6 @@ public final class LogementManager {
     public static JPanel getLogementList(){
 
         JPanel panel = new JPanel();
-        AirBnBData data = AirBnBData.getInstance();
 
 
         for( Logement logement : data.getLogements()){
@@ -55,7 +56,7 @@ public final class LogementManager {
         JPanel maison1 = new JPanel();
         JPanel maison2 = new JPanel();
 
-        Data = AirBnBData.getInstance();
+
 
         box = new BoxLayout(main,BoxLayout.PAGE_AXIS);
         main.setLayout(box);
@@ -209,7 +210,7 @@ public final class LogementManager {
 
                         int superficieJardinInt = Integer.parseInt(superficieJardinText.getText());
 
-                        Data.addMaison(idHoteInt,tarifInt,adresseText.getText(),
+                        data.addMaison(idHoteInt,tarifInt,adresseText.getText(),
                                 superficieInt,nbVoyageurInt,
                                 superficieJardinInt , gp1.isSelected() );
 
@@ -232,10 +233,10 @@ public final class LogementManager {
                        int superficieBalconInt = Integer.parseInt(superficieBalconText.getText());
                        int numAppartInt = Integer.parseInt(numAppartText.getText());
 
-                       Data.addAppartement(idHoteInt,tarifInt,adresseText.getText(),
+                       data.addAppartement(idHoteInt,tarifInt,adresseText.getText(),
                                superficieInt,nbVoyageurInt,superficieBalconInt,numAppartInt);
 
-                       for(Logement log : Data.getLogements()){
+                       for(Logement log : data.getLogements()){
                            log.afficher();
                        }
 
@@ -313,9 +314,84 @@ public final class LogementManager {
         main.add(buttonAdd);
         main.add(labelReussite);
 
+        return main;
+
+    }
+
+    ///////////////////////////////////////
+    //          SUPRESSION LOGEMENT PANEL
+    //
+
+    static JComboBox comboLogement;
+    public static JPanel deleteLogement(){
+
+        JPanel main = new JPanel();
+        /*
+        JComboBox<String> comboBox = new JComboBox<String>();
+        String logementInter = "";
+        String[] logementFormated = new String[data.getLogements().size()];
+        int iteration = 0;
+        for(Logement logement : data.getLogements()){
+
+            logementInter = logement.getAdresse();
+            logementFormated[iteration] = logementInter + " / id :" + iteration;
+
+            iteration++;
+        }
+*/
+        JPanel panel = new JPanel();
+
+        comboLogement = loadLogement();
+
+
+        JButton suprimButton = new JButton("Suprimmer");
+
+
+
+        suprimButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                GestionLogements.supprimerLogement(AirBnBData.getInstance().getLogements().get(comboLogement.getSelectedIndex()));
+                panel.remove(comboLogement);
+
+                comboLogement = loadLogement();
+
+
+                panel.add(comboLogement);
+                panel.revalidate();
+                panel.repaint();
+
+            }
+        });
+
+        panel.add(comboLogement);
+
+        main.add(panel);
+        main.add(suprimButton);
+
 
 
         return main;
+    }
+
+
+    // PARTIE FONCTION
+
+    private static JComboBox loadLogement(){
+
+        String logementInter = "";
+        String[] logementFormated = new String[data.getLogements().size()];
+        int iteration = 0;
+        for(Logement logement : data.getLogements()){
+
+            logementInter = logement.getAdresse();
+            logementFormated[iteration] = logementInter + " / id :" + iteration;
+
+            iteration++;
+        }
+        JComboBox comboBox = new JComboBox(logementFormated);
+        return comboBox;
 
     }
 
@@ -333,12 +409,13 @@ public final class LogementManager {
 
     private static boolean checkHote(String idHote){
         try{
-            Data.getHotes().get(Integer.parseInt(idHote));
+            data.getHotes().get(Integer.parseInt(idHote));
             return true;
         }
         catch(Exception e){
             return false;
         }
     }
+
 
 }
