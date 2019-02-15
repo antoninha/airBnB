@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import sap.airbnb.data.AirBnBData;
 import sap.airbnb.reservations.Reservation;
 import sap.airbnb.reservations.Sejour;
 import sap.airbnb.reservations.SejourCourt;
@@ -34,7 +35,7 @@ public class GestionReservations {
                     ajouterReservation();
                     break;
                 case 2:
-                    supprimerReservation();
+                    //supprimerReservation();
                     break;
                 case 3:
                     Menu.listerMenu();
@@ -125,19 +126,11 @@ public class GestionReservations {
         listerReservations();
     }
 
-    private static void supprimerReservation() throws Exception {
+    public static void supprimerReservation(int numero) throws Exception {
 
-        System.out.println("-------------------------------------");
-        System.out.println("Supprimer une réservation");
 
-        System.out.print("Numéro : ");
-        int numero = Menu.scanner.nextInt();
-        System.out.println();
-
-        Menu.listReservations.remove(numero);
-
+        AirBnBData.getInstance().getReservations().remove(numero);
         System.out.println("Votre réservation a été supprimée avec succés");
 
-        listerReservations();
     }
 }
