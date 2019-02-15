@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import sap.airbnb.frame.panelLogement.LogementManager;
+import sap.airbnb.frame.panelReservation.reservationManager;
 import sap.airbnb.logements.Appartement;
 import sap.airbnb.logements.Logement;
 import sap.airbnb.logements.Maison;
@@ -38,7 +39,7 @@ public class Menu {
 
 		JFrame frame = new JFrame();
 
-
+		reservationManager reservationManagere = new reservationManager();
 		LogementManager logementManger = new LogementManager();
 
 		// Fenetre principale
@@ -49,7 +50,7 @@ public class Menu {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-		JPanel panel = logementManger.deleteLogement();
+		JPanel panel = reservationManagere.deleteReservation();
 
 		frame.add(panel);
 		//frame.pack();
