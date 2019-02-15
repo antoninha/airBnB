@@ -36,7 +36,7 @@ public class Reservation implements Cloneable {
 		this.voyageur = voyageur;
 
 		dateDeReservation = new Date();
-		estValidee = false;
+		estValidee = true;
 	}
 
 	public void afficher() {

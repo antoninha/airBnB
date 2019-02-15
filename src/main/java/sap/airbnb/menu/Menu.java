@@ -50,7 +50,7 @@ public class Menu {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-		JPanel panel = reservationManagere.deleteReservation();
+		JPanel panel = reservationManagere.addReservation();
 
 		frame.add(panel);
 		//frame.pack();

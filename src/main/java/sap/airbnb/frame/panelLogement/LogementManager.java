@@ -46,7 +46,7 @@ public final class LogementManager {
         JPanel main = new JPanel();
         JPanel panel = new JPanel();
         JPanel panel2 = new JPanel();
-        panel2.setMaximumSize(panel2.getPreferredSize());
+
         JPanel panel3 = new JPanel();
         JPanel panel4 = new JPanel();
         JPanel panel5 = new JPanel();
@@ -379,7 +379,7 @@ public final class LogementManager {
 
     // PARTIE FONCTION
 
-    private static JComboBox loadLogement(){
+    public static JComboBox loadLogement(){
 
         String logementInter = "";
         String[] logementFormated = new String[data.getLogements().size()];
@@ -396,7 +396,7 @@ public final class LogementManager {
 
     }
 
-    private static boolean checkInt(String stringToTest){
+    public static boolean checkInt(String stringToTest){
         try{
            Integer.parseInt(stringToTest);
            return true;
